@@ -1,37 +1,38 @@
 #include <iostream>
+#include <chrono>
 
 #include "Board.h"
-#include "Interface_handling.h"
+#include "AI.h"
+#include "Player.h"
+//#include "Interface_handling.h"
+
+
 
 int main() {
-	int size;
-	int range;
+	
+
+	Board* pBrd = new Board(3, 3);
+	pBrd->Show();
+	bool isLeft = true;
+
 	int round = 1;
 	
-	bool win = false;
+	while (isLeft) {
+		if (round % 2 == 1) {
+			Put(pBrd, round);
+			pBrd->Show();
+		}
+		else if (round % 2 == 0) {
+		CPut(pBrd);
+			//Put(pBrd, round);
+			pBrd->Show();
 
-	size = Get_Size();
-	range = Get_Range();
+		}
 
-	Board* b = new Board(size, range);
-	b->Show();
-
-	while (round < (size * size) + 1 and !win) {
-		Statement(round, size, win, 1);
-
-		if (round % 2 == 1) std::cout << "Player 1: \n";
-		else if (round % 2 == 0) std::cout << "Player 2: \n";
-
-		b->Put(b->GetMove(), round);
-		
-		b->Show();
-		std::cout << std::endl;
-		win = b->CheckBoard();
-		
+		std::cout << pBrd->CheckWinner() << std::endl;
+		isLeft = pBrd->IsMovieLeft();
 		round++;
 	}
 
-	Statement(round, size, win, 2);
-	
-	b->~Board();
+	pBrd->~Board();
 }

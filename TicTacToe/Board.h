@@ -6,22 +6,19 @@
 #include <iostream>
 #include <string>
 
+#include "Move.h"
+
 class Board {
 public:
-	int size;
-	int range;
 	char** bPointer;
-	std::string* mPointer;
+	int b_size;
+	int c_range;
 
-	Board(int nsize, int nrange);
+	Board(int size, int range);
 	~Board();
 
 	void Show();
-	void Put(std::string move, int round);
-	bool CheckBoard();
-
-	bool IsAlready(std::string move);
-	bool IsTheSame(int r1, int c1, int c_case);
-
-	std::string GetMove();
+	int CheckWinner();
+	
+	bool IsMovieLeft();
 };

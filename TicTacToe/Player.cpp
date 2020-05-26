@@ -1,5 +1,11 @@
 #include "Player.h"
 
+/*
+	Funkcja rekurencyjna, pobieraj¹ca od gracza ruch.
+	Wychwytuje wyjœcie poza granicê planszy oraz miejsce w
+	którym stoi ju¿ jakiœ znak.
+*/
+
 Move GetMove(Board* pBrd) {
 	std::string move, tmp1, tmp2;
 	Move pMove;
@@ -31,9 +37,21 @@ Move GetMove(Board* pBrd) {
 	return pMove;
 }
 
+/*
+	Funkcja umieszczaj¹ca na planszy znak gracza.
+*/
+
 void Put(Board* pBoard, int round) {
 	Move pMove = GetMove(pBoard);
 	
 	if(round % 2 == 1)	pBoard->bPointer[pMove.row][pMove.col] = PLAYER;
 	else if(round % 2 == 0 )	pBoard->bPointer[pMove.row][pMove.col] = COMPUTER;
+}
+
+/*
+	Funkcja u¿ywana w funkcji Dirver()
+*/
+
+void Put(Board* pBrd) {
+	pBrd->bPointer[1][1] = PLAYER;
 }

@@ -1,14 +1,63 @@
 #include <iostream>
 #include <chrono>
+#include <vector>
+#include <fstream>
 
 #include "Board.h"
 #include "AI.h"
 #include "Player.h"
 #include "Interface_handling.h"
 
+std::vector<int> T_2nd_move;
+std::vector<int> T_1st_move;
+
+/*
+	Funkcja wychwytuj¹ca iloœæ czasu potrzebnego komputerowi na obliczenie
+	ruchu dla ró¿nego rozmiaru tablicy i warunków rozpoczêcia gry.
+*/
+
+void Driver() {
+	int size[9] = { 3,4,5,6,7,8,9,10,15 };
+	
+	for (int i = 0; i < 9; i++) {
+		Board* pBrd = new Board(size[i], size[i]);
+		Put(pBrd);
+		
+		auto start = std::chrono::steady_clock::now();
+		CPut(pBrd);
+		auto end = std::chrono::steady_clock::now();
+		T_2nd_move.push_back((int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+		std::cout << "DONE \n";
+		pBrd->~Board();
+	}
+
+	for (int i = 0; i < 9; i++) {
+		Board* pBrd = new Board(size[i], size[i]);
+		auto start = std::chrono::steady_clock::now();
+		CPut(pBrd);
+		auto end = std::chrono::steady_clock::now();
+		T_1st_move.push_back((int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
+		std::cout << "DONE \n";
+		pBrd->~Board();
+	}
+
+	std::ofstream file("results.txt");
+	file << "AI -> 2nd move \n";
+	for (int i = 0; i < 9; i++) {
+		file << T_2nd_move[i] << "\n";
+	}
+
+	file << "AI -> 1st move \n";
+	for (int i = 0; i < 9; i++) {
+		file << T_1st_move[i] << "\n";
+	}
+	file.close();
+}
 
 
 int main() {
+
+	//Driver();
 	int round = 1;
 	bool PvC = false;
 	bool isLeft = true;
@@ -29,11 +78,8 @@ int main() {
 		}
 		
 		else if (round % 2 == 0) {
-			auto start = std::chrono::steady_clock::now();
 			if (PvC) CPut(pBrd);
 			else Put(pBrd, round);
-			auto end = std::chrono::steady_clock::now();
-			std::cout << "TIME: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << " us \n";
 			pBrd->Show();
 		}
 

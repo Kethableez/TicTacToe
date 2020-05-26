@@ -1,5 +1,9 @@
 #include "Board.h"
 
+/*
+	Konstruktor parametryczny klasy
+*/
+
 Board::Board(int size, int range) {
 	this->c_range = range;
 	this->b_size = size;
@@ -17,11 +21,20 @@ Board::Board(int size, int range) {
 	}
 }
 
+/*
+	Destruktor klasy
+*/
+
 Board::~Board() {
 	for (int i = 0; i < this->b_size; i++) {
 		delete[] this->bPointer[i];
 	}
 }
+
+/*
+	Metoda odpowiadaj¹ca za rysowanie planszy
+	w terminalu
+*/
 
 void Board::Show() {
 	for (int i = 0; i < this->b_size; i++) {
@@ -41,6 +54,11 @@ void Board::Show() {
 	std::cout << std::endl;
 }
 
+/*
+	Metoda sprawdzaj¹ca czy zosta³ jakikolwiek
+	ruch do wykonania
+*/
+
 bool Board::IsMovieLeft() {
 	int counter = 0;
 	
@@ -54,6 +72,14 @@ bool Board::IsMovieLeft() {
 	if (counter > 0) return true;
 	else return false;
 }
+
+/*
+	Metoda sprawdzaj¹ca czy któryœ z graczy umieœci³
+	wyrywaj¹c¹ iloœæ znaków w rzêdzie.
+	Zwraca 10 w przypadku zwyciêstwa X
+	Zwraca -10 w przypadku zwyciêstwa O
+	Zwraca 0 w ka¿dym innym przypadku
+*/
 
 int Board::CheckWinner() {
 	if (this->c_range == this->b_size) {

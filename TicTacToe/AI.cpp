@@ -1,5 +1,9 @@
 #include "AI.h"
 
+/*
+	Funkcja umieszczaj¹ca znak w konkretnym
+	miejscu na planszy
+*/
 
 void CPut(Board* pBoard) {
 	Move cMove;
@@ -7,6 +11,12 @@ void CPut(Board* pBoard) {
 
 	pBoard->bPointer[cMove.row][cMove.col] = COMPUTER;
 }
+
+/*
+	Algorytm minimax s³u¿¹cy do znalezienia naljepszego
+	mo¿liwego ruchu przy zadanej g³êbokoœci i wykorzystuj¹cy
+	obciêcia Alfa-Beta.
+*/
 
 int minimax(Board* pB, int depth, bool isMaximizing, int alpha, int beta) {
 	int result = pB->CheckWinner();
@@ -64,6 +74,11 @@ int minimax(Board* pB, int depth, bool isMaximizing, int alpha, int beta) {
 	}
 }
 
+/*
+	Funkcja szukaj¹ca najlepszego mo¿liwego ruchu w danym
+	etapie rozgrywki
+*/
+
 Move bestMove(Board* pB) {
 	int bestVal = INF;
 
@@ -93,6 +108,11 @@ Move bestMove(Board* pB) {
 	return best;
 }
 
+/*
+	Funkcja zwracaj¹ca g³êbokoœæ szukania dla ró¿nego rozmiaru
+	planszy.
+*/
+
 int _Depth(Board* pBrd) {
 	int size = pBrd->b_size;
 
@@ -100,3 +120,5 @@ int _Depth(Board* pBrd) {
 	else if (size >= 4 and size < 7) return (9 - size + 1);
 	else if (size >= 7 and size < 10) return 3;
 	else return 2;
+
+}

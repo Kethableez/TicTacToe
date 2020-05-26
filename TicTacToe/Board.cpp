@@ -90,7 +90,7 @@ int Board::CheckWinner() {
 				}
 				else if (i == this->b_size - 1) {
 					if (this->bPointer[0][0] == PLAYER) return 10;
-					else if (this->bPointer[0][0] == COMPUTER) return -10;
+					else if (this->bPointer[0][0] == OPPONENT) return -10;
 				}
 			}
 		}
@@ -103,7 +103,7 @@ int Board::CheckWinner() {
 					}
 					else if (i == this->b_size - 1) {
 						if (this->bPointer[0][j] == PLAYER) return 10;
-						else if (this->bPointer[0][j] == COMPUTER) return -10;
+						else if (this->bPointer[0][j] == OPPONENT) return -10;
 					}
 				}
 			}
@@ -117,7 +117,7 @@ int Board::CheckWinner() {
 					}
 					else if (j == this->b_size - 1) {
 						if (this->bPointer[i][0] == PLAYER) return 10;
-						else if (this->bPointer[i][0] == COMPUTER) return -10;
+						else if (this->bPointer[i][0] == OPPONENT) return -10;
 					}
 				}
 			}
@@ -131,7 +131,7 @@ int Board::CheckWinner() {
 				}
 				else if (i == this->b_size - 1) {
 					if (this->bPointer[0][this->b_size - 1] == PLAYER) return 10;
-					else if (this->bPointer[0][this->b_size - 1] == COMPUTER) return -10;
+					else if (this->bPointer[0][this->b_size - 1] == OPPONENT) return -10;
 				}
 			}
 		}
@@ -148,7 +148,7 @@ int Board::CheckWinner() {
 
 						else if (k == this->c_range - 1) {
 							if (this->bPointer[i][j] == PLAYER) return 10;
-							else if (this->bPointer[i][j] == COMPUTER) return -10;
+							else if (this->bPointer[i][j] == OPPONENT) return -10;
 						}
 					}
 				}
@@ -163,7 +163,7 @@ int Board::CheckWinner() {
 
 						else if (k == this->c_range - 1) {
 							if (this->bPointer[i][j] == PLAYER) return 10;
-							else if (this->bPointer[i][j] == COMPUTER) return -10;
+							else if (this->bPointer[i][j] == OPPONENT) return -10;
 						}
 					}
 				}
@@ -178,7 +178,7 @@ int Board::CheckWinner() {
 
 						else if (k == this->c_range - 1) {
 							if (this->bPointer[i][j] == PLAYER) return 10;
-							else if (this->bPointer[i][j] == COMPUTER) return -10;
+							else if (this->bPointer[i][j] == OPPONENT) return -10;
 						}
 					}
 				}
@@ -193,7 +193,7 @@ int Board::CheckWinner() {
 
 						else if (k == this->c_range - 1) {
 							if (this->bPointer[i][j] == PLAYER) return 10;
-							else if (this->bPointer[i][j] == COMPUTER) return -10;
+							else if (this->bPointer[i][j] == OPPONENT) return -10;
 						}
 					}
 				}

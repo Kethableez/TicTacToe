@@ -142,6 +142,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Interface_handling.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>

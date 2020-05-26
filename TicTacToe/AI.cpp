@@ -9,7 +9,7 @@ void CPut(Board* pBoard) {
 	Move cMove;
 	cMove = bestMove(pBoard);
 
-	pBoard->bPointer[cMove.row][cMove.col] = COMPUTER;
+	pBoard->bPointer[cMove.row][cMove.col] = OPPONENT;
 }
 
 /*
@@ -60,7 +60,7 @@ int minimax(Board* pB, int depth, bool isMaximizing, int alpha, int beta) {
 			for (int j = 0; j < pB->b_size; j++) {
 				if (pB->bPointer[i][j] == ' ') {
 					
-					pB->bPointer[i][j] = COMPUTER;
+					pB->bPointer[i][j] = OPPONENT;
 					int score = minimax(pB, depth - 1, !isMaximizing, alpha, beta);
 					pB->bPointer[i][j] = ' ';
 					
@@ -92,7 +92,7 @@ Move bestMove(Board* pB) {
 		for (int j = 0; j < pB->b_size; j++) {
 			if (pB->bPointer[i][j] == ' ') {
 				
-				pB->bPointer[i][j] = COMPUTER;
+				pB->bPointer[i][j] = OPPONENT;
 				int move = minimax(pB, depth, true, nINF, INF);
 				pB->bPointer[i][j] = ' ';
 

@@ -56,7 +56,7 @@ void Driver() {
 
 
 int main() {
-
+	
 	//Driver();
 	int round = 1;
 	bool PvC = false;
@@ -72,6 +72,8 @@ int main() {
 	pBrd->Show();
 
 	while (isLeft) {
+		MoveStatement(round);
+
 		if (round % 2 == 1) {
 			Put(pBrd, round);
 			pBrd->Show();
@@ -93,4 +95,5 @@ int main() {
 
 	Statement(pBrd, round);
 	pBrd->~Board();
+	
 }

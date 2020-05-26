@@ -13,6 +13,19 @@ int Get_Size() {
 	return size;
 }
 
+void MoveStatement(int round) {
+	if (round % 2 == 1) {
+		std::cout << "----------------\n";
+		std::cout << "X player's turn \n";
+		std::cout << "----------------\n";
+	}
+	else {
+		std::cout << "----------------\n";
+		std::cout << "O player's turn \n";
+		std::cout << "----------------\n";
+	}
+}
+
 int Get_Range() {
 	int range;
 
@@ -28,8 +41,17 @@ int Get_Range() {
 
 void Statement(Board* pBrd, int round) {
 	if (pBrd->CheckWinner() == 10 or pBrd->CheckWinner() == -10) {
-		if (round % 2 == 1) std::cout << "Player 1 wins";
-		else std::cout << "Player 2 wins";
+		if (round % 2 == 1) {
+			std::cout << "-------------\n";
+			std::cout << "Player 1 wins\n";
+			std::cout << "-------------";
+		}
+
+		else {
+			std::cout << "-------------\n";
+			std::cout << "Player 2 wins\n";
+			std::cout << "-------------";
+		}
 	}
 	else std::cout << "Tie!";
 }

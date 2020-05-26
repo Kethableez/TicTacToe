@@ -4,14 +4,23 @@
 #include "Board.h"
 #include "AI.h"
 #include "Player.h"
-//#include "Interface_handling.h"
+#include "Interface_handling.h"
 
 
 
 int main() {
-	
+	int size = Get_Size();
+	int range = Get_Range();
+	int choice;
+	bool PvC = false;
 
-	Board* pBrd = new Board(3, 3);
+	std::cout << "1. Player vs Player \n";
+	std::cout << "2. Playr vs Computer \n";
+	std::cin >> choice;
+	if (choice == 2) PvC = true;
+
+	Board* pBrd = new Board(size, range);
+	
 	pBrd->Show();
 	bool isLeft = true;
 
@@ -23,16 +32,26 @@ int main() {
 			pBrd->Show();
 		}
 		else if (round % 2 == 0) {
-		CPut(pBrd);
-			//Put(pBrd, round);
+			if (PvC) CPut(pBrd);
+			else Put(pBrd, round);
 			pBrd->Show();
 
 		}
 
-		std::cout << pBrd->CheckWinner() << std::endl;
+		if (pBrd->CheckWinner() == 10 or pBrd->CheckWinner() == -10) {
+			break;
+		}
+		
 		isLeft = pBrd->IsMovieLeft();
 		round++;
 	}
+	
+
+	if (pBrd->CheckWinner() == 10 or pBrd->CheckWinner() == -10) {
+		if (round % 2 == 1) std::cout << "Player 1 wins";
+		else std::cout << "Player 2 wins";
+	}
+	else std::cout << "Tie!";
 
 	pBrd->~Board();
 }

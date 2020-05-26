@@ -1,6 +1,6 @@
 #include "Interface_handling.h"
 
-/*int Get_Size() {
+int Get_Size() {
 	int size;
 
 	std::cout << "Enter Board size: ";
@@ -25,7 +25,7 @@ int Get_Range() {
 	}
 	return range;
 }
-
+/*
 void Statement(int round, int size, bool win, int choice) {
 	if (choice == 1) {
 		std::cout << "------------------------------\n";

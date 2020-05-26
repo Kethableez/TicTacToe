@@ -25,25 +25,28 @@ int Get_Range() {
 	}
 	return range;
 }
-/*
-void Statement(int round, int size, bool win, int choice) {
-	if (choice == 1) {
-		std::cout << "------------------------------\n";
-		std::cout << "ROUND " << round << "\n";
-		std::cout << "------------------------------\n";
-	}
 
-	if (choice == 2) {
-		std::cout << "------------------------------\n";
-		if (round == (size * size) + 1) {
-			std::cout << "Game over, none of players win!\n";
-		}
-		else if (win and (round - 1) % 2 == 1) {
-			std::cout << "Game over, Player 1 win! \n";
-		}
-		else if (win and (round - 1) % 2 == 0) {
-			std::cout << "Game over, Player 2 win! \n";
-		}
-		std::cout << "------------------------------\n";
+void Statement(Board* pBrd, int round) {
+	if (pBrd->CheckWinner() == 10 or pBrd->CheckWinner() == -10) {
+		if (round % 2 == 1) std::cout << "Player 1 wins";
+		else std::cout << "Player 2 wins";
 	}
-}*/
+	else std::cout << "Tie!";
+}
+
+int Menu() {
+	int choice;
+	std::cout << "--------------------------\n";
+	std::cout << "        TIC TAC TOE     \n";
+	std::cout << "--------------------------\n";
+	std::cout << "1. Player vs Player \n";
+	std::cout << "2. Player vs Computer \n";
+	std::cout << "> ";
+	std::cin >> choice;
+	
+	if (choice == 1 or choice == 2) return choice;
+	else {
+		std::cout << "Incorrect option! Try again \n";
+		choice = Menu();
+	}
+}

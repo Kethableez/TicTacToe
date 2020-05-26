@@ -1,7 +1,8 @@
 #pragma once
+
 #include "Board.h"
 
 int Get_Size();
 int Get_Range();
-
-void Statement(int round, int size, bool win, int choice);
+int Menu();
+void Statement(Board* pBrd, int round);

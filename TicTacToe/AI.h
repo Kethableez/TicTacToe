@@ -11,4 +11,5 @@ int minimax(Board* pB, int depth, bool isMaximizing);
 Move bestMove(Board* pB);
 
 void CPut(Board* pBoard);
+int _Depth(Board* pBoard);
 

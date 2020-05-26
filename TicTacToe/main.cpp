@@ -29,8 +29,11 @@ int main() {
 		}
 		
 		else if (round % 2 == 0) {
+			auto start = std::chrono::steady_clock::now();
 			if (PvC) CPut(pBrd);
 			else Put(pBrd, round);
+			auto end = std::chrono::steady_clock::now();
+			std::cout << "TIME: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << " us \n";
 			pBrd->Show();
 		}
 

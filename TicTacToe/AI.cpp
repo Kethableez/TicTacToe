@@ -71,7 +71,7 @@ Move bestMove(Board* pB) {
 	best.row = -1;
 	best.col = -1;
 
-	int depth = 1.4 * pB->b_size;
+	int depth = _Depth(pB);
 
 	for (int i = 0; i < pB->b_size; i++) {
 		for (int j = 0; j < pB->b_size; j++) {
@@ -92,3 +92,11 @@ Move bestMove(Board* pB) {
 
 	return best;
 }
+
+int _Depth(Board* pBrd) {
+	int size = pBrd->b_size;
+
+	if (size == 3) return 9;
+	else if (size >= 4 and size < 7) return (9 - size + 1);
+	else if (size >= 7 and size < 10) return 3;
+	else return 2;

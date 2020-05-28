@@ -18,6 +18,10 @@ std::vector<int> T_1st_move;
 
 void Driver() {
 	int size[9] = { 3,4,5,6,7,8,9,10,15 };
+
+	std::cout << "Testing computing time for minimax algorithm! \n";
+	std::cout << "----------------------------------------------\n";
+	std::cout << "Case: Player makes first move! \n";
 	
 	for (int i = 0; i < 9; i++) {
 		Board* pBrd = new Board(size[i], size[i]);
@@ -27,9 +31,13 @@ void Driver() {
 		CPut(pBrd);
 		auto end = std::chrono::steady_clock::now();
 		T_2nd_move.push_back((int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
-		std::cout << "DONE \n";
+		
+		std::cout << "Size " << size[i] << "x" << size[i] << " done \n";
 		pBrd->~Board();
 	}
+
+	std::cout << "----------------------------------------------\n";
+	std::cout << "Case: Computer makes first move! \n";
 
 	for (int i = 0; i < 9; i++) {
 		Board* pBrd = new Board(size[i], size[i]);
@@ -37,7 +45,8 @@ void Driver() {
 		CPut(pBrd);
 		auto end = std::chrono::steady_clock::now();
 		T_1st_move.push_back((int)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count());
-		std::cout << "DONE \n";
+		
+		std::cout << "Size " << size[i] << "x" << size[i] << " done \n";
 		pBrd->~Board();
 	}
 
@@ -54,10 +63,10 @@ void Driver() {
 	file.close();
 }
 
-
 int main() {
 	
 	//Driver();
+	
 	int round = 1;
 	bool PvC = false;
 	bool isLeft = true;
@@ -93,7 +102,6 @@ int main() {
 		round++;
 	}
 
-	Statement(pBrd, round);
+	EndStatement(pBrd, round);
 	pBrd->~Board();
-	
 }

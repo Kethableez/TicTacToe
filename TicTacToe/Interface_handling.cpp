@@ -39,21 +39,25 @@ int Get_Range() {
 	return range;
 }
 
-void Statement(Board* pBrd, int round) {
+void EndStatement(Board* pBrd, int round) {
 	if (pBrd->CheckWinner() == 10 or pBrd->CheckWinner() == -10) {
 		if (round % 2 == 1) {
 			std::cout << "-------------\n";
-			std::cout << "Player 1 wins\n";
+			std::cout << "Player X wins\n";
 			std::cout << "-------------";
 		}
 
 		else {
 			std::cout << "-------------\n";
-			std::cout << "Player 2 wins\n";
+			std::cout << "Player O wins\n";
 			std::cout << "-------------";
 		}
 	}
-	else std::cout << "Tie!";
+	else {
+		std::cout << "----------\n";
+		std::cout << "Tie!\n";
+		std::cout << "----------";
+	}
 }
 
 int Menu() {
